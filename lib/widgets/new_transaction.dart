@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class NewTransaction extends StatelessWidget {
   final Function newTxn;
@@ -6,6 +7,16 @@ class NewTransaction extends StatelessWidget {
   final amountInput = new TextEditingController();
 
   NewTransaction(this.newTxn);
+
+  void submitTxn() {
+    final text = titleInput.text;
+    final amount = double.parse(amountInput.text);
+
+    if (text.isEmpty || amount < 0) {
+      return;
+    }
+    newTxn(text, amount);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,13 +29,16 @@ class NewTransaction extends StatelessWidget {
             TextField(
               decoration: InputDecoration(labelText: 'Title'),
               controller: titleInput,
+               onSubmitted: (_) => this.submitTxn(),
             ),
             TextField(
               decoration: InputDecoration(labelText: 'Amount'),
               controller: amountInput,
+              keyboardType: TextInputType.number,
+              onSubmitted: (_) => this.submitTxn(),
             ),
             FlatButton(
-              onPressed: () => newTxn(titleInput.text, double.parse(amountInput.text)),
+              onPressed: submitTxn,
               textColor: Colors.purple,
               child: Text('Add Transaction'),
             )
