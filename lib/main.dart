@@ -41,66 +41,66 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransactions = [
-    Transaction(
-      id: '121',
-      amount: 66.66,
-      title: 'New Shoes',
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: '121',
-      amount: 66.66,
-      title: 'New Shoes',
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: '121',
-      amount: 66.66,
-      title: 'New Shes',
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: '121',
-      amount: 66.66,
-      title: 'New Shoes',
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: '121',
-      amount: 66.66,
-      title: 'New Shoes',
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: '121',
-      amount: 66.66,
-      title: 'New Shoes',
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: '121',
-      amount: 66.66,
-      title: 'New Shoes',
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: '121',
-      amount: 66.66,
-      title: 'New Shoes',
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: '121',
-      amount: 66.66,
-      title: 'New Shoes',
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: '135',
-      amount: 55.66,
-      title: 'New Shirt',
-      date: DateTime.now(),
-    ),
+    // Transaction(
+    //   id: '121',
+    //   amount: 66.66,
+    //   title: 'New Shoes',
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: '121',
+    //   amount: 66.66,
+    //   title: 'New Shoes',
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: '121',
+    //   amount: 66.66,
+    //   title: 'New Shes',
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: '121',
+    //   amount: 66.66,
+    //   title: 'New Shoes',
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: '121',
+    //   amount: 66.66,
+    //   title: 'New Shoes',
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: '121',
+    //   amount: 66.66,
+    //   title: 'New Shoes',
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: '121',
+    //   amount: 66.66,
+    //   title: 'New Shoes',
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: '121',
+    //   amount: 66.66,
+    //   title: 'New Shoes',
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: '121',
+    //   amount: 66.66,
+    //   title: 'New Shoes',
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: '135',
+    //   amount: 55.66,
+    //   title: 'New Shirt',
+    //   date: DateTime.now(),
+    // ),
   ];
 
   void _addTransaction(String title, double amount) {
