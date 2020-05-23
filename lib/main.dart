@@ -1,29 +1,120 @@
 import 'package:flutter/material.dart';
+import './widgets/new_transaction.dart';
+import './widgets/transaction_list.dart';
 
-import 'widgets/transaction_home.dart';
-
+import 'models/transaction.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter App',
+      title: 'Personal Expenses',
       home: MyHomePage(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
+
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+
+    final List<Transaction> _userTransactions = [
+    Transaction(
+      id: '121',
+      amount: 66.66,
+      title: 'New Shoes',
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: '121',
+      amount: 66.66,
+      title: 'New Shoes',
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: '121',
+      amount: 66.66,
+      title: 'New Shes',
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: '121',
+      amount: 66.66,
+      title: 'New Shoes',
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: '121',
+      amount: 66.66,
+      title: 'New Shoes',
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: '121',
+      amount: 66.66,
+      title: 'New Shoes',
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: '121',
+      amount: 66.66,
+      title: 'New Shoes',
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: '121',
+      amount: 66.66,
+      title: 'New Shoes',
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: '121',
+      amount: 66.66,
+      title: 'New Shoes',
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: '135',
+      amount: 55.66,
+      title: 'New Shirt',
+      date: DateTime.now(),
+    ),
+  ];
+
+  void _addTransaction(String title, double amount) {
+    print('hit');
+    final obj = new Transaction(
+        id: DateTime.now().toString(),
+        title: title,
+        amount: amount,
+        date: DateTime.now());
+
+    setState(() {
+      _userTransactions.add(obj);
+    });
+  }
+
+  void _startAddNewTxn(BuildContext ctx) {
+    showModalBottomSheet(context: ctx, builder: (_) {
+      return NewTransaction(_addTransaction);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter App'),
+        title: Text('Personal Expenses'),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
-            onPressed: () {},
+            onPressed: () => _startAddNewTxn(context),
           )
         ],
       ),
@@ -39,11 +130,11 @@ class MyHomePage extends StatelessWidget {
               elevation: 5,
             ),
           ),
-          TransactionHome(),
+         TransactionList(_userTransactions),
         ],
       ),
       floatingActionButton:
-          FloatingActionButton(child: Icon(Icons.add), onPressed: () {}),
+          FloatingActionButton(child: Icon(Icons.add), onPressed: () => _startAddNewTxn(context),),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
