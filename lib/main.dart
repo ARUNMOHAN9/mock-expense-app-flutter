@@ -3,6 +3,7 @@ import './widgets/new_transaction.dart';
 import './widgets/transaction_list.dart';
 
 import 'models/transaction.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -11,20 +12,35 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Personal Expenses',
       home: MyHomePage(),
+      theme: ThemeData(
+        primarySwatch: Colors.purple,
+        accentColor: Colors.amberAccent,
+        fontFamily: 'Noto',
+        textTheme: TextTheme(
+          headline6: TextStyle(
+            fontFamily: 'Caveat',
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+            color: Colors.purple,
+          ),
+        ),
+        appBarTheme: AppBarTheme(
+          textTheme: TextTheme(
+            headline6: TextStyle(fontFamily: 'Caveat', fontSize: 32),
+          ),
+        ),
+      ),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-
-
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-    final List<Transaction> _userTransactions = [
+  final List<Transaction> _userTransactions = [
     Transaction(
       id: '121',
       amount: 66.66,
@@ -88,7 +104,6 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
 
   void _addTransaction(String title, double amount) {
-    print('hit');
     final obj = new Transaction(
         id: DateTime.now().toString(),
         title: title,
@@ -101,9 +116,11 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _startAddNewTxn(BuildContext ctx) {
-    showModalBottomSheet(context: ctx, builder: (_) {
-      return NewTransaction(_addTransaction);
-    });
+    showModalBottomSheet(
+        context: ctx,
+        builder: (_) {
+          return NewTransaction(_addTransaction);
+        });
   }
 
   @override
@@ -130,11 +147,13 @@ class _MyHomePageState extends State<MyHomePage> {
               elevation: 5,
             ),
           ),
-         TransactionList(_userTransactions),
+          TransactionList(_userTransactions),
         ],
       ),
-      floatingActionButton:
-          FloatingActionButton(child: Icon(Icons.add), onPressed: () => _startAddNewTxn(context),),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () => _startAddNewTxn(context),
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
