@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import './widgets/chart.dart';
 import './widgets/new_transaction.dart';
 import './widgets/transaction_list.dart';
 
@@ -41,67 +43,17 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransactions = [
-    // Transaction(
-    //   id: '121',
-    //   amount: 66.66,
-    //   title: 'New Shoes',
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: '121',
-    //   amount: 66.66,
-    //   title: 'New Shoes',
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: '121',
-    //   amount: 66.66,
-    //   title: 'New Shes',
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: '121',
-    //   amount: 66.66,
-    //   title: 'New Shoes',
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: '121',
-    //   amount: 66.66,
-    //   title: 'New Shoes',
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: '121',
-    //   amount: 66.66,
-    //   title: 'New Shoes',
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: '121',
-    //   amount: 66.66,
-    //   title: 'New Shoes',
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: '121',
-    //   amount: 66.66,
-    //   title: 'New Shoes',
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: '121',
-    //   amount: 66.66,
-    //   title: 'New Shoes',
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: '135',
-    //   amount: 55.66,
-    //   title: 'New Shirt',
-    //   date: DateTime.now(),
-    // ),
   ];
+
+  List<Transaction> get _recentTransactions {
+    return _userTransactions.where((element) {
+      return element.date.isAfter(
+        DateTime.now().subtract(
+          Duration(days: 7),
+        ),
+      );
+    }).toList();
+  }
 
   void _addTransaction(String title, double amount) {
     final obj = new Transaction(
@@ -139,14 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Container(
-            width: double.infinity,
-            child: Card(
-              color: Colors.blue,
-              child: Text('Chart !!!'),
-              elevation: 5,
-            ),
-          ),
+          Chart(_recentTransactions),
           TransactionList(_userTransactions),
         ],
       ),
