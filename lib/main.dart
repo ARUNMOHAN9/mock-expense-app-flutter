@@ -26,6 +26,8 @@ class MyApp extends StatelessWidget {
             color: Colors.purple,
           ),
         ),
+        buttonTheme: ButtonThemeData(
+            buttonColor: Colors.purple, textTheme: ButtonTextTheme.primary),
         appBarTheme: AppBarTheme(
           textTheme: TextTheme(
             headline6: TextStyle(fontFamily: 'Caveat', fontSize: 32),
@@ -42,8 +44,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Transaction> _userTransactions = [
-  ];
+  final List<Transaction> _userTransactions = [];
 
   List<Transaction> get _recentTransactions {
     return _userTransactions.where((element) {
@@ -55,12 +56,13 @@ class _MyHomePageState extends State<MyHomePage> {
     }).toList();
   }
 
-  void _addTransaction(String title, double amount) {
+  void _addTransaction(String title, double amount, DateTime selectedDate) {
     final obj = new Transaction(
-        id: DateTime.now().toString(),
-        title: title,
-        amount: amount,
-        date: DateTime.now());
+      id: DateTime.now().toString(),
+      title: title,
+      amount: amount,
+      date: selectedDate,
+    );
 
     setState(() {
       _userTransactions.add(obj);
